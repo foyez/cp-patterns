@@ -2,7 +2,7 @@
 
 ## Arithmetic
 
-1. Digit to sum
+1. Digit to sum (input: 123, output: 6)
 
 <details>
 <summary>View solutions</summary>
