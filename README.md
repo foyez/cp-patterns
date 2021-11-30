@@ -24,3 +24,28 @@ digitToSum(123) // 6
 ```
   
 </details>
+
+2. Reverse a number (input: -123, output: -321)
+
+<details>
+<summary>View solutions</summary>
+
+**Solution 1**
+
+```js
+function reverse(num) {
+  let r = 0
+    
+  for(let i = Math.abs(num); i != 0;) {
+    r = r * 10 ;
+    r = r + i % 10;
+    i = Math.floor(i/10);
+  }
+    
+  return num < 0 ? -r : r
+};
+
+reverse(-123) // -321
+```
+
+</details>
