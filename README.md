@@ -49,3 +49,79 @@ reverse(-123) // -321
 ```
 
 </details>
+
+## Linked List
+
+1. Find middle node (Input: head = [1,2,3,4] Output: [3,4])
+
+<details>
+<summary>View solutions</summary>
+
+**Solution 1**
+
+```js
+function getMiddleNode (head) {
+    let fast = head
+    let slow = head
+    
+    while(fast !== null && fast.next !== null) {
+        fast = fast.next.next
+        slow = slow.next
+    }
+    
+    return slow
+}
+```
+
+</details>
+
+2. Detect a Linked List Cycle
+
+<details>
+<summary>View solutions</summary>
+
+**Solution 1**
+
+```js
+function detectLLCycle (head) {
+    let fast = head
+    let slow = head
+    
+    while(fast !== null && fast.next !== null && slow !== null) {
+        fast = fast.next.next
+        slow = slow.next
+
+        if(slow === fast) return true
+    }
+    
+    return false
+}
+```
+
+</details>
+
+3. Reverse a linked list
+
+<details>
+<summary>View solutions</summary>
+
+**Solution 1**
+
+```js
+function reverseLL (head) {
+    let curr = head
+    let prev = null
+    let next = null
+    
+    while(curr !== null) {
+        next = curr.next
+        curr.next = prev
+        prev = curr
+        curr = next
+    }
+    
+    return prev
+}
+```
+
+</details>
