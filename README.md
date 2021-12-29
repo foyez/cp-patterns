@@ -50,6 +50,26 @@ reverse(-123) // -321
 
 </details>
 
+
+## Array
+
+1. Define a 2D array
+
+<details>
+<summary>View solutions</summary>
+
+```js
+const row = 5
+const col = 4
+const val = 0
+const myGrid = [...Array(row)].map(() => Array(col).fill(val));
+```
+
+```
+```
+
+</details>
+
 ## Linked List
 
 1. Find middle node (Input: head = [1,2,3,4] Output: [3,4])
