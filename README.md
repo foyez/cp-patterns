@@ -107,13 +107,12 @@ function detectLLCycle (head) {
     let fast = head
     let slow = head
     
-    while(fast !== null && fast.next !== null && slow !== null) {
+    while(fast !== null && fast.next !== null && slow !== fast) {
         fast = fast.next.next
         slow = slow.next
-
-        if(slow === fast) return true
     }
     
+    if(slow === fast) return true
     return false
 }
 ```
