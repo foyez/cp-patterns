@@ -51,6 +51,35 @@ reverse(-123) // -321
 </details>
 
 
+3. Big modular
+
+
+<details>
+<summary>View solutions</summary>
+
+**Solution 1**
+
+```js
+// a ^ b % M
+
+function bigMod (a, b, M) {
+    if (b === 0) return 1 % M
+    
+    let x = bigMod(a, Math.floor(b / 2), M)
+    console.log({x1:x})
+    x = (x * x) % M
+    console.log({x2:x})
+    if (b % 2 === 1) x = (x * a) % M
+    console.log({x3:x})
+    return x
+}
+
+console.log(bigMod(2, 5, 7)) // 2 ^ 5 % 7 = 4
+console.log(bigMod(2, 100, 7)) // 2 ^ 5 % 7 = 2
+```
+
+</details>
+
 ## Array
 
 1. Define a 2D array
