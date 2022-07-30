@@ -80,6 +80,30 @@ console.log(bigMod(2, 100, 7)) // 2 ^ 5 % 7 = 2
 
 </details>
 
+## Common Patterns
+
+1. Sliding window
+
+<details>
+<summary>View solutions</summary>
+
+```py
+def maxPrice(arr, k):
+  total = sum(arr[:k])
+  max_price = total
+  
+  for i in range(len(arr) - k):
+    total -= arr[i]
+    total += arr[k+i]
+    max_price = max(total, max_price)
+    
+  return max_price
+  
+maxPrice([1,4,5,6], 3) # 15
+```
+
+</details>
+
 ## Array
 
 1. Define a 2D array
