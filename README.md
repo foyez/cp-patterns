@@ -208,14 +208,16 @@ function detectLLCycle (head) {
 
 **Solution 1**
 
+<img width="1668" alt="image" src="https://user-images.githubusercontent.com/11992095/194465735-208f24d0-3ed0-4c86-8d1c-ecd84a471d07.png">
+
+
 ```js
 function reverseLL (head) {
     let curr = head
     let prev = null
-    let next = null
     
     while(curr !== null) {
-        next = curr.next
+        let next = curr.next
         curr.next = prev
         prev = curr
         curr = next
