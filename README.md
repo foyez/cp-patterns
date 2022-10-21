@@ -54,7 +54,35 @@ digitToSum(123) // 6
   
 </details>
 
-2. Reverse a number (input: -123, output: -321)
+2. Lenght of a number
+
+<details>
+<summary>View solutions</summary>
+
+**Solution 1**
+
+`javascript`
+```js
+function digitToLength(num) {
+  if (num === 0) {
+    return 1
+  }
+  return Math.floor(Math.log10(num)) + 1
+}
+```
+
+`python`
+```py
+import math
+def digitToLength(num):
+  if num == 0:
+    return 1
+  return math.floor(math.log10(num))
+```
+
+</details>
+
+3. Reverse a number (input: -123, output: -321)
 
 <details>
 <summary>View solutions</summary>
@@ -80,7 +108,7 @@ reverse(-123) // -321
 </details>
 
 
-3. Big modular
+4. Big modular
 
 
 <details>
