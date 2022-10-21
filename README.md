@@ -147,7 +147,16 @@ const val = 0
 const myGrid = [...Array(row)].map(() => Array(col).fill(val));
 ```
 
-```
+</details>
+
+2. Prefix Sum of Matrix (Or 2D Array)
+
+<details>
+<summary>View solutions</summary>
+
+```js
+// Formula
+psa[i][j] = psa[i-1][j] + psa[i][j-1] -  psa[i-1][j-1] + a[i][j]
 ```
 
 </details>
