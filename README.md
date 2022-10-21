@@ -77,7 +77,7 @@ import math
 def digitToLength(num):
   if num == 0:
     return 1
-  return math.floor(math.log10(num))
+  return math.floor(math.log10(num)) + 1
 ```
 
 </details>
