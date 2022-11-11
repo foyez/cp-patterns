@@ -188,12 +188,27 @@ console.log(bigMod(2, 100, 7)) // 2 ^ 5 % 7 = 2
 
 ## Common Patterns
 
-1. Sliding window
+### 1. Sliding window
 
 <details>
-<summary>View solutions</summary>
+<summary>View contents</summary>
+
+Identify sliding window problems:
+
+1. Input is array/string
+2. subarray/substring -> largest/minimum/maximum
+3. Given k window size or have to calculate window size
+
+2 Types of sliding windows:
+
+1. Fixed Size Window
+
+<details>
+<summary>View codes</summary>
 
 ```py
+# Find maximum sum sub array of k size
+
 def maxPrice(arr, k):
   total = sum(arr[:k])
   max_price = total
@@ -207,6 +222,10 @@ def maxPrice(arr, k):
   
 maxPrice([1,4,5,6], 3) # 15
 ```
+
+</details>
+
+2. Variable Size Window
 
 </details>
 
