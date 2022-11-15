@@ -1,6 +1,6 @@
 # Problem Solving Patterns
 
-## Common time complexities
+## Time complexity
 
 <details>
 <summary>View contents</summary>
@@ -35,42 +35,53 @@ Let n be the main variable in the problem.
 <summary>View contents</summary>
 
 If input array is sorted then
+
 - Binary search
 - Two pointers
 
 If asked for all permutations/subsets then
+
 - Backtracking
 
 If given a tree then
+
 - DFS
 - BFS
 
 If given a graph then
+
 - DFS
 - BFS
 
 If given a linked list then
+
 - Two pointers
 
 If recursion is banned then
+
 - Stack
 
 If must solve in-place then
+
 - Swap corresponding values
 - Store one or more different values in the same pointer
 
 If asked for maximum/minimum subarray/subset/options then
+
 - Dynamic programming
 
 If asked for top/least K items then
+
 - Heap
 - QuickSelect
 
 If asked for common strings then
+
 - Map
 - Trie
 
 Else
+
 - Map/Set for O(1) time & O(n) space
 - Sort input for O(nlogn) time and O(1) space
 
@@ -86,21 +97,21 @@ source: [Sean Prashad's Leetcode Patterns](https://seanprashad.com/leetcode-patt
 <summary>View solutions</summary>
 
 **Solution 1:**
-  
+
 ```js
 function dititToSum(n) {
   let sum = 0;
-  
+
   for (; n; n = Math.floor(n / 10)) {
     sum += n % 10;
   }
-  
-  return sum
+
+  return sum;
 }
-  
-digitToSum(123) // 6
+
+digitToSum(123); // 6
 ```
-  
+
 </details>
 
 2. Lenght of a number
@@ -111,16 +122,18 @@ digitToSum(123) // 6
 **Solution 1**
 
 `javascript`
+
 ```js
 function digitToLength(num) {
   if (num === 0) {
-    return 1
+    return 1;
   }
-  return Math.floor(Math.log10(num)) + 1
+  return Math.floor(Math.log10(num)) + 1;
 }
 ```
 
 `python`
+
 ```py
 import math
 def digitToLength(num):
@@ -140,25 +153,23 @@ def digitToLength(num):
 
 ```js
 function reverse(num) {
-  let r = 0
-    
-  for(let i = Math.abs(num); i != 0;) {
-    r = r * 10 ;
-    r = r + i % 10;
-    i = Math.floor(i/10);
-  }
-    
-  return num < 0 ? -r : r
-};
+  let r = 0;
 
-reverse(-123) // -321
+  for (let i = Math.abs(num); i != 0; ) {
+    r = r * 10;
+    r = r + (i % 10);
+    i = Math.floor(i / 10);
+  }
+
+  return num < 0 ? -r : r;
+}
+
+reverse(-123); // -321
 ```
 
 </details>
 
-
 4. Big modular
-
 
 <details>
 <summary>View solutions</summary>
@@ -168,20 +179,20 @@ reverse(-123) // -321
 ```js
 // a ^ b % M
 
-function bigMod (a, b, M) {
-    if (b === 0) return 1 % M
-    
-    let x = bigMod(a, Math.floor(b / 2), M)
-    console.log({x1:x})
-    x = (x * x) % M
-    console.log({x2:x})
-    if (b % 2 === 1) x = (x * a) % M
-    console.log({x3:x})
-    return x
+function bigMod(a, b, M) {
+  if (b === 0) return 1 % M;
+
+  let x = bigMod(a, Math.floor(b / 2), M);
+  console.log({ x1: x });
+  x = (x * x) % M;
+  console.log({ x2: x });
+  if (b % 2 === 1) x = (x * a) % M;
+  console.log({ x3: x });
+  return x;
 }
 
-console.log(bigMod(2, 5, 7)) // 2 ^ 5 % 7 = 4
-console.log(bigMod(2, 100, 7)) // 2 ^ 5 % 7 = 2
+console.log(bigMod(2, 5, 7)); // 2 ^ 5 % 7 = 4
+console.log(bigMod(2, 100, 7)); // 2 ^ 5 % 7 = 2
 ```
 
 </details>
@@ -212,14 +223,14 @@ Identify sliding window problems:
 def maxPrice(arr, k):
   total = sum(arr[:k])
   max_price = total
-  
+
   for i in range(len(arr) - k):
     total -= arr[i]
     total += arr[k+i]
     max_price = max(total, max_price)
-    
+
   return max_price
-  
+
 maxPrice([1,4,5,6], 3) # 15
 ```
 
@@ -237,9 +248,9 @@ maxPrice([1,4,5,6], 3) # 15
 <summary>View solutions</summary>
 
 ```js
-const row = 5
-const col = 4
-const val = 0
+const row = 5;
+const col = 4;
+const val = 0;
 const myGrid = [...Array(row)].map(() => Array(col).fill(val));
 ```
 
@@ -252,7 +263,7 @@ const myGrid = [...Array(row)].map(() => Array(col).fill(val));
 
 ```js
 // Formula
-psa[i][j] = psa[i-1][j] + psa[i][j-1] -  psa[i-1][j-1] + a[i][j]
+psa[i][j] = psa[i - 1][j] + psa[i][j - 1] - psa[i - 1][j - 1] + a[i][j];
 ```
 
 </details>
@@ -267,16 +278,16 @@ psa[i][j] = psa[i-1][j] + psa[i][j-1] -  psa[i-1][j-1] + a[i][j]
 **Solution 1**
 
 ```js
-function getMiddleNode (head) {
-    let fast = head
-    let slow = head
-    
-    while(fast !== null && fast.next !== null) {
-        fast = fast.next.next
-        slow = slow.next
-    }
-    
-    return slow
+function getMiddleNode(head) {
+  let fast = head;
+  let slow = head;
+
+  while (fast !== null && fast.next !== null) {
+    fast = fast.next.next;
+    slow = slow.next;
+  }
+
+  return slow;
 }
 ```
 
@@ -290,17 +301,17 @@ function getMiddleNode (head) {
 **Solution 1**
 
 ```js
-function detectLLCycle (head) {
-    let fast = head
-    let slow = head
-    
-    while(fast !== null && fast.next !== null && slow !== fast) {
-        fast = fast.next.next
-        slow = slow.next
-    }
-    
-    if(slow === fast) return true
-    return false
+function detectLLCycle(head) {
+  let fast = head;
+  let slow = head;
+
+  while (fast !== null && fast.next !== null && slow !== fast) {
+    fast = fast.next.next;
+    slow = slow.next;
+  }
+
+  if (slow === fast) return true;
+  return false;
 }
 ```
 
@@ -315,21 +326,66 @@ function detectLLCycle (head) {
 
 <img width="1668" alt="image" src="https://user-images.githubusercontent.com/11992095/194465735-208f24d0-3ed0-4c86-8d1c-ecd84a471d07.png">
 
-
 ```js
-function reverseLL (head) {
-    let curr = head
-    let prev = null
-    
-    while(curr !== null) {
-        let next = curr.next
-        curr.next = prev
-        prev = curr
-        curr = next
-    }
-    
-    return prev
+function reverseLL(head) {
+  let curr = head;
+  let prev = null;
+
+  while (curr !== null) {
+    let next = curr.next;
+    curr.next = prev;
+    prev = curr;
+    curr = next;
+  }
+
+  return prev;
 }
 ```
+
+</details>
+
+## Import Problems
+
+<details>
+<summary>View contents</summary>
+1. Swap Two Numbers
+
+<details>
+<summary>View solutions</summary>
+
+**[You can find all the code here](https://github.com/foyez/cp-patterns/tree/main/codes/1-swap-two-numbers.py)**
+
+```py
+a, b = 10, 20
+
+# solution 1: Third variable
+t = a
+a = b
+b = t
+
+
+# solution 2: addition & subtraction
+a = a + b  # 10 + 20 = 30
+b = a - b  # 30 - 20 = 10
+a = a - b  # 30 - 10 = 20
+
+
+# solution 3: multiplication & division
+a = a*b  # 10 * 20 = 200
+b = a/b  # 200 / 20 = 10
+a = a/b  # 200 / 10 = 20
+
+
+# solution 4: bitwise XOR(^)
+a = a ^ b  # 01010 ^ 10100 = 11110 = 30
+b = a ^ b  # 11110 ^ 10100 = 01010 = 10
+a = a ^ b  # 11110 ^ 01010 = 10100 = 20
+
+
+# solution 5: single line
+a, b = b, a
+```
+
+</details>
 
 </details>
