@@ -1,5 +1,5 @@
 # Take an element and place it in correct orders
-# TC: O(n^2), SC: O(1)
+# TC: worst - O(n^2), best - O(n), SC: O(1)
 
 def insertionSort(nums):
     for i in range(len(nums)):

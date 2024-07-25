@@ -1,5 +1,5 @@
 # push the maximum to the last by adjacent swaps
-# TC: O(n^2), SC: O(1)
+# TC: worst - O(n^2), best - O(n), SC: O(1)
 
 def bubbleSort(nums):
     for i in range(len(nums) - 1, -1, -1):
