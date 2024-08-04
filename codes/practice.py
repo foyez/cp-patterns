@@ -1,35 +1,22 @@
-def binary_search(items, target):
-    l, r = 0, len(items) - 1
+def minSwaps(nums):
+    N = len(nums)
+    total_ones = nums.count(1)
+    l = 0
 
-    while l <= r:
-        m = l + (r-l)//2
+    window_ones = max_window_ones = 0
 
-        if target == items[m]:
-            return True
-        elif target > items[m]:
-            l = m + 1
-        else:
-            r = m - 1
-    return False
+    for r in range(2 * N):
+        if nums[r % N]:
+            window_ones += 1
 
-def binary_search_recursive(items, target):
-    def recursive_search(l, r):
-        if l > r:
-            return False
+        if r - l + 1 > total_ones:
+            window_ones -= nums[l % N]
+            l += 1
 
-        m = l + (r - l) // 2
-        if target == items[m]:
-            return True
-        elif target > items[m]:
-            return recursive_search(m+1, r)
-        else:
-            return recursive_search(l, m - 1)
+        max_window_ones = max(max_window_ones, window_ones)
 
-    return recursive_search(0, len(items) - 1)
+    return total_ones - max_window_ones
 
-items = [1,2,3,4,5,6]
-print(binary_search(items, 3))
-print(binary_search(items, 9))
-
-print(binary_search_recursive(items, 5))
-print(binary_search_recursive(items, -1))
+print(minSwaps([0,1,0,1,1,0,0]))
+print(minSwaps([0,1,1,1,0,0,1,1,0]))
+print(minSwaps([1,1,0,0,1]))
