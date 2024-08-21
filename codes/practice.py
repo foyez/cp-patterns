@@ -1,22 +1,15 @@
-def minSwaps(nums):
-    N = len(nums)
-    total_ones = nums.count(1)
-    l = 0
+def getLargestIndexLen(feature1, feature2):
+    count = 0
 
-    window_ones = max_window_ones = 0
+    for i in range(len(feature1)-1):
+        if feature1[i] > feature1[i+1] and feature2[i] > feature2[i+1]:
+            count += 1
+        elif feature1[i] < feature1[i+1] and feature2[i] < feature2[i+1]:
+            count += 1
 
-    for r in range(2 * N):
-        if nums[r % N]:
-            window_ones += 1
+    count += 1
+    return count
 
-        if r - l + 1 > total_ones:
-            window_ones -= nums[l % N]
-            l += 1
-
-        max_window_ones = max(max_window_ones, window_ones)
-
-    return total_ones - max_window_ones
-
-print(minSwaps([0,1,0,1,1,0,0]))
-print(minSwaps([0,1,1,1,0,0,1,1,0]))
-print(minSwaps([1,1,0,0,1]))
+print(getLargestIndexLen([3,2,1], [6,5,4]))
+print(getLargestIndexLen([1,2,3,4,5], [5,4,3,2,1]))
+print(getLargestIndexLen([4,5,3,1,2], [2,1,3,4,5]))
