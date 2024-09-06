@@ -9,21 +9,20 @@ class LLCurd:
         self.head = Node(1)
         self.head.next = Node(2)
 
-    def deleteNode(self, index):
+    def deleteNode(self, index: int) -> None:
         dummy = Node(next=self.head)
         prev, cur = dummy, self.head
-        count = -1
+        i = 0
 
-        while cur and cur.next and count != index - 1:
-            prev = cur
+        while i < index and cur:
+            prev = prev.next
             cur = cur.next
-            count += 1
+            i += 1
 
-        if count + 1 != index:
-            print("Index {} doesn't exists.".format(index))
-            return
-
+        # remove the node
         prev.next = cur.next
+        cur = cur.next
+        
         self.head = dummy.next
 
     def deleteEndNode(self):
@@ -31,7 +30,7 @@ class LLCurd:
         prev, cur = dummy, self.head
 
         while cur and cur.next:
-            prev = cur
+            prev = prev.next
             cur = cur.next
         prev.next = None
         self.head = dummy.next
@@ -42,20 +41,18 @@ class LLCurd:
     def insertAt(self, index, val):
         dummy = Node(next=self.head)
         prev, cur = dummy, self.head
-        count = -1
+        i = 0
 
-        while cur and count != index - 1:
-            prev = cur
+        while i < index and cur:
+            prev = prev.next
             cur = cur.next
-            count += 1
+            i += 1
 
-        if count + 1 != index:
-            print("Index {} doesn't exists.".format(index))
-            return
-
+        # add the node
         newNode = Node(val=val)
         newNode.next = cur
         prev.next = newNode
+
         self.head = dummy.next
 
     def insertAtEnd(self, val):
@@ -67,19 +64,19 @@ class LLCurd:
         cur.next = Node(val)
 
     def insertAtBeginning(self, val):
-        dummy = Node(val)
-        dummy.next = self.head
-        self.head = dummy
+        newNode = Node(val)
+        newNode.next = self.head
+        self.head = newNode
 
     def reverseLL(self):
         prev = None
         cur = self.head
 
         while cur:
-            next = cur.next
+            nxt = cur.next
             cur.next = prev
             prev = cur
-            cur = next
+            cur = nxt
 
         self.head = prev
 
@@ -126,10 +123,10 @@ class LLCurd:
             print("Loop doesn't exists")
 
     def printLL(self, node = None):
-        if not self.head:
-            print("Linked List is empty")
-
         cur = node if node else self.head
+
+        if not cur:
+            print("Linked List is empty")
 
         while cur:
             print(cur.val, end=" ")
@@ -144,10 +141,10 @@ ll.insertAtEnd(20)
 ll.insertAtBeginning(-10)
 ll.printLL()
 
-# ll.deleteNode(0)
+ll.deleteNode(1)
 # ll.deleteEndNode()
 # ll.deleteFirstNode()
-# ll.printLL()
+ll.printLL()
 
 ll.reverseLL()
 ll.printLL()
