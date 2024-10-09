@@ -1,3 +1,7 @@
+# FIFO - First In First Out
+# Enqueue - O(1)
+# Dequeue - O(1)
+
 from collections import deque
 
 # dq = deque()
@@ -27,4 +31,4 @@ print(dq) # deque([1,2,3,4,5])
 dq.extendleft([-1,0]) 
 print(dq) # deque([-1,0,1,2,3,4,5])
 
-# for queue, we will use dq.push() and dq.popleft()
+# for queue, we will use dq.append() and dq.popleft()
