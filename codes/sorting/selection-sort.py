@@ -4,11 +4,15 @@
 
 def selectionSort(nums):
     for i in range(len(nums) - 1):
+        min_index = i
+
         for j in range(i, len(nums)):
-            if nums[i] > nums[j]:
-                temp = nums[i]
-                nums[i] = nums[j]
-                nums[j] = temp
+            if nums[min_index] > nums[j]:
+                min_index = j
+
+        temp = nums[min_index]
+        nums[min_index] = nums[i]
+        nums[i] = temp
 
     return nums
 
